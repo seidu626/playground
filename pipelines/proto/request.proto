@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package pipelines;
+
+option go_package = "./proto;pipelines";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+service RequestService {
+  rpc AddRequest(Request) returns (Request);
+}
+
+message Request {
+  google.protobuf.Any context = 1;
+  google.protobuf.Any candidates = 2;
+}
